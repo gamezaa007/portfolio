@@ -1,0 +1,82 @@
+/* Reset & Theme */
+:root{--bg:#0b1220;--card:#121a2b;--text:#e6ecff;--muted:#a6b1d0;--brand:#7aa2ff;--accent:#6ff8d3;--ring:rgba(122,162,255,.35)}
+:root.light{--bg:#f5f7ff;--card:#ffffff;--text:#0f172a;--muted:#475569;--brand:#3b82f6;--accent:#06b6d4;--ring:rgba(59,130,246,.25)}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:"Anuphan",ui-sans-serif,system-ui;background:radial-gradient(1600px 800px at 100% -10%,rgba(122,162,255,.07),transparent 40%),radial-gradient(1400px 700px at -10% 110%,rgba(111,248,211,.06),transparent 40%),var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
+.container{width:min(1100px,92%);margin:auto}
+
+/* Header/Nav */
+.site-header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(140%) blur(10px);background:color-mix(in oklab,var(--bg),transparent 70%);border-bottom:1px solid color-mix(in oklab,var(--text),transparent 90%)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.brand{font-weight:700}
+.nav a{margin-left:16px;color:var(--text);opacity:.85}
+.nav a:hover{opacity:1}
+.btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#0b1220;font-weight:700;border:0;padding:10px 14px;border-radius:14px;box-shadow:0 10px 24px -12px var(--ring);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid color-mix(in oklab,var(--text),transparent 85%)}
+
+/* Hero */
+.hero{margin:20px 0}
+.hero-grid{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center}
+.avatar{width:110px;height:110px;border-radius:50%;object-fit:cover;border:2px solid color-mix(in oklab,var(--brand),white 20%)}
+.subtitle{color:var(--muted)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.badge{padding:6px 10px;border-radius:999px;border:1px solid color-mix(in oklab,var(--text),transparent 85%);font-size:13px;transition:transform .25s}
+.badge:hover{transform:scale(1.06)}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.intro{margin-top:12px}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0;padding:0;list-style:none}
+.mini{padding:16px}
+.k{font-size:22px;font-weight:800}
+.marquee{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px dashed color-mix(in oklab,var(--text),transparent 85%);color:var(--muted);white-space:nowrap;overflow:hidden}
+.marquee::after{content:"";display:inline-block;width:100%}
+
+/* Layout */
+.card{background:var(--card);border:1px solid color-mix(in oklab,var(--text),transparent 90%);border-radius:18px;padding:20px;box-shadow:0 14px 40px -24px var(--ring)}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.list{margin:0;padding-left:18px}
+.muted{color:var(--muted)}
+
+/* Skills */
+.skills{display:grid;gap:12px}
+.skill{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.meter{height:8px;width:48%;background:color-mix(in oklab,var(--text),transparent 90%);border-radius:999px;overflow:hidden}
+.meter>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--accent));width:calc(var(--w, .7)*100%)}
+
+/* Projects */
+.project{display:grid;grid-template-columns:120px 1fr;gap:14px;transition:transform .25s, box-shadow .25s}
+.project img{width:120px;height:80px;object-fit:cover;border-radius:12px;border:1px solid color-mix(in oklab,var(--text),transparent 88%)}
+.project:hover{transform:translateY(-4px);box-shadow:0 18px 40px -28px var(--ring)}
+
+/* Timeline */
+.timeline{position:relative;margin:0;padding-left:18px}
+.timeline li{margin:10px 0}
+.timeline::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;background:color-mix(in oklab,var(--text),transparent 85%)}
+
+/* Testimonials slider */
+.testimonials .slider{display:flex;gap:16px;overflow:auto;scroll-snap-type:x mandatory}
+.testimonials figure{scroll-snap-align:start;margin:0;background:color-mix(in oklab,var(--card),white 5%);border-radius:14px;padding:14px;border:1px solid color-mix(in oklab,var(--text),transparent 90%)}
+
+/* Footer */
+footer{padding:40px 0 60px;color:var(--muted);text-align:center}
+
+/* Responsive */
+@media (max-width:900px){
+  .grid-3{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:80px 1fr}
+  .avatar{width:80px;height:80px}
+}
+
+/* Motion: subtle bounce & reduced-motion support */
+@media (prefers-reduced-motion:no-preference){
+  .bounce{animation:bounce 2s ease-in-out infinite;animation-delay:6s}
+  @keyframes bounce{0%,100%{transform:translateY(0)}20%{transform:translateY(-6px)}40%{transform:translateY(0)}}
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease, transform .5s ease}
+.reveal.revealed{opacity:1;transform:none}
+
+/* Fit text helpers */
+.fit{font-size:clamp(20px,4.2vw,40px);text-wrap:balance}
